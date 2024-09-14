@@ -1,0 +1,19 @@
+<!-- templates/menu_item_confirm_delete.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Menu Item</title>
+</head>
+<body>
+    <h1>Delete Menu Item</h1>
+    <p>Are you sure you want to delete "{{ menu_item }}"?</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+    </form>
+
+    <a href="{% url 'menu_items' %}">Cancel</a>
+</body>
+</html>

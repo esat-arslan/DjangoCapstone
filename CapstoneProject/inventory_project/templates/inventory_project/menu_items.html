@@ -1,0 +1,31 @@
+<!-- templates/menu_items.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Items</title>
+</head>
+<body>
+    <h1>Menu Items</h1>
+    
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        {% for item in object_list %}
+        <tr>
+            <td>{{ item.title }}</td>
+            <td>${{ item.price }}</td>
+            <td>
+                <a href="{% url 'menu_items_update' item.id %}">Edit</a> |
+                <a href="{% url 'menu_items_delete' item.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'menu_items_create' %}">Create New Menu Item</a>
+</body>
+</html>

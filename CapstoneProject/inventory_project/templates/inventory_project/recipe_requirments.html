@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block title %}Recipe Requirements{% endblock %}
+{% block content %}
+<div>
+  <h2>Recipe Requirements</h2>
+  <table class="ingredient-table">
+    <thead>
+      <tr>
+        <th>Menu Item</th>
+        <th>Ingredient</th>
+        <th>Quantity</th>
+        <th>Unit</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for requirement in object_list %}
+        <tr>
+          <td>{{ requirement.menu_item }}</td>
+          <td>
+            <a href="{% url 'update_ingredient' requirement.ingredient.id %}">{{ requirement.ingredient.name }}</a>
+          </td>
+          <td>{{ requirement.quantity }}</td>
+          <td>{{ requirement.ingredient.unit }}</td>
+          <td>
+            <a href="{% url 'delete_ingredient' requirement.ingredient.id %}" style="text-decoration: none; color: inherit;">❌</a>
+          </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url 'create_ingredient' %}" style="display: inherit; text-align: center; border-radius: 15px; text-decoration: none; color: inherit; padding: 4px; background-color: lightgreen;">➕</a>
+</div>
+{% endblock %}

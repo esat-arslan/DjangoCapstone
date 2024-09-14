@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block title %}Django Capstone{% endblock %}
+{% block content %}
+<div>
+  <h2>Stations</h2>
+  <table class="purchase-table">
+    <thead>
+      <tr>
+        <th>Menu Item</th>
+        <th>TimeStamp</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for purchases in object_list %}
+        <tr>
+          <td>
+            <a href="{% url "purchases_update" purchases.id %}">{{ purchases.menu_item }}</a>
+          </td>
+          <td>{{ purchases.timestamp }}</td>
+          <td><a href="{% url "purchases_delete" purchases.id %}" style="text-decoration: none; color: inherit;">❌</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url "purchases_create" %}" style="display: inherit; text-align: center; border-radius: 15px; text-decoration: none; color: inherit; padding: 4px; background-color: lightgreen;">➕</a>
+</div>
+{% endblock %}

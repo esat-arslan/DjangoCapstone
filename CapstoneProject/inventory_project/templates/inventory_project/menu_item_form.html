@@ -1,0 +1,19 @@
+<!-- templates/menu_item_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ form.instance.id|yesno:"Update,Create" }} Menu Item</title>
+</head>
+<body>
+    <h1>{{ form.instance.id|yesno:"Update,Create" }} Menu Item</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+
+    <a href="{% url 'menu_items' %}">Back to Menu Items</a>
+</body>
+</html>
