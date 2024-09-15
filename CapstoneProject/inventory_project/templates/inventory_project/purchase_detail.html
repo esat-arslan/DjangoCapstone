@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %} 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Purchase Detail</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Purchase Detail</h1>
+
+        <div class="purchase-details">
+            <h2>Item: {{ purchase.menu_item }}</h2>
+            <p><strong>Purchased On:</strong> {{ purchase.timestamp }}</p>
+            <p><strong>Quantity:</strong> {{ purchase.quantity }}</p>
+            <p><strong>Total Price:</strong> ${{ purchase.total_price }}</p>
+            <p><strong>Notes:</strong> {{ purchase.notes }}</p> <!-- Add any other relevant fields from the Purchase model -->
+        </div>
+
+        <div class="actions">
+            <a href="{% url 'purchase_update' purchase.id %}">Edit</a> |
+            <a href="{% url 'purchase_delete' purchase.id %}">Delete</a> |
+            <a href="{% url 'purchases' %}">Back to Purchases</a> <!-- Link back to the list of purchases -->
+        </div>
+    </div>
+</body>
+</html>

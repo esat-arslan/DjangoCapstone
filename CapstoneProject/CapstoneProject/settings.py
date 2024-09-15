@@ -26,18 +26,37 @@ SECRET_KEY = 'django-insecure-ccqnf$1s@xg(vdvoqxuz3)ux@2=2-=d4a+y$1cb%zcc*&kbn1c
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer" # better to use Redis channel layer
+    }
+}
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'chat.apps.ChatConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'daphne',
     'django.contrib.staticfiles',
-    'inventory_project'
+    'channels',
+    'inventory_project', #managing inventory and purchases.
+    'home', #index app for multiple app's
+    #mail sending app
+    ##crispy forms
+    'crispy_forms',
+    ##user app
+    'user.apps.UserConfig',
+    'django_otp',
+    'django_otp.plugins.otp_email',
+    'two_factor',
+    'contact',
+    'django_recaptcha',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +88,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'CapstoneProject.wsgi.application'
+ASGI_APPLICATION = 'CapstoneProject.asgi.application'
 
 
 # Database
@@ -122,5 +142,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-LOGIN_REDIRECT_URL = 'home'  
-LOGOUT_REDIRECT_URL = 'login'
+###### email ######
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ars1613@gmail.com'
+EMAIL_HOST_PASSWORD = 'enyu lzmh ixxg iheh'
+OTP_EMAIL_VERIFICATION = True
+#### recaptcha#####
+RECAPTCHA_PUBLIC_KEY = "6LeeTkMqAAAAAOFJsjuu_sQYSqZ5EgpYR1pDOUqk"
+RECAPTCHA_PRIVATE_KEY = "6LeeTkMqAAAAAKFL2G5l1pWK39bHrVM--YFp_WXr"
+LOGIN_REDIRECT_URL = 'chat-page'
+LOGOUT_REDIRECT_URL = 'login-user'

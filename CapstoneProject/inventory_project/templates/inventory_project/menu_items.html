@@ -1,31 +1,37 @@
-<!-- templates/menu_items.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Menu Items</title>
-</head>
-<body>
-    <h1>Menu Items</h1>
-    
-    <table border="1">
-        <tr>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Actions</th>
-        </tr>
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %}Menu Items{% endblock %}
+
+{% block content %}
+<div>
+    <h2>Menu Items</h2>
+    <table class="ingredient-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
         {% for item in object_list %}
-        <tr>
-            <td>{{ item.title }}</td>
-            <td>${{ item.price }}</td>
-            <td>
-                <a href="{% url 'menu_items_update' item.id %}">Edit</a> |
-                <a href="{% url 'menu_items_delete' item.id %}">Delete</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    <a href="{% url 'menu_items_update' item.id %}">{{ item.title }}</a>
+                </td>
+                <td>
+                    ${{ item.price }}
+                </td>
+                <td>
+                    <a href="{% url 'menu_items_update' item.id %}" style="text-decoration: none; color: inherit;">✏️</a>
+                    <a href="{% url 'menu_items_delete' item.id %}" style="text-decoration: none; color: inherit;">❌</a>
+                </td>
+            </tr>
         {% endfor %}
+        </tbody>
     </table>
 
-    <a href="{% url 'menu_items_create' %}">Create New Menu Item</a>
-</body>
-</html>
+    <a href="{% url 'menu_items_create' %}" style="display: inherit; text-align: center; border-radius: 15px; text-decoration: none; color: inherit; padding: 4px; background-color: lightgreen;">➕ Create New Menu Item</a>
+</div>
+{% endblock %}

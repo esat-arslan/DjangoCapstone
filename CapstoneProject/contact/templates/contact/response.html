@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Response</title>
+</head>
+<body>
+    <h1>{{ response_message }}</h1>
+    <form method="get" action="{{ next_url }}">
+        <button type="submit">Go Back</button>
+    </form>
+    <form method="get" action="{% url 'home' %}">
+        <button type="submit">Go to Homepage</button>
+    </form>
+</body>
+</html>

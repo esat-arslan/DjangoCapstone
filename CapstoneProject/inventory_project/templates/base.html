@@ -6,20 +6,29 @@
     <title>Inventory Project</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- Link to Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Link to Font Awesome for icons (optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'ingredients' %}">Ingredients</a></li>
-                <li><a href="{% url 'purchases' %}">Purchases</a></li>
-                <li><a href="{% url 'recipe_requirments' %}">Recipe Requirements</a></li>
-                <li><a href="{% url 'menu_items' %}">Menu Items</a></li>
+                <li><a href="{% url 'inventory_project_home' %}"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="{% url 'ingredients' %}"><i class="fas fa-carrot"></i> Ingredients</a></li>
+                <li><a href="{% url 'purchases' %}"><i class="fas fa-shopping-cart"></i> Purchases</a></li>
+                <li><a href="{% url 'recipe_requirments' %}"><i class="fas fa-book-open"></i> Recipe Requirements</a></li>
+                <li><a href="{% url 'menu_items' %}"><i class="fas fa-utensils"></i> Menu Items</a></li>
             </ul>
         </nav>
     </header>
     <main>
+        <!-- Back button -->
+        <button class="back-button" onclick="window.history.back();"><i class="fas fa-arrow-left"></i> Go Back</button>
+        <form method="get" action="{% url 'home' %}">
+            <button type="submit">Go to IndexPage</button>
+        </form>
         {% block content %}
         {% endblock %}
     </main>

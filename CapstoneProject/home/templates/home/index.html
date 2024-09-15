@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to the Home Page</h1>
+    <p>Here are the various sections of My application:</p>
+    
+    <h2>Applications</h2>
+    
+    <div>
+        <h3>App 1: Inventory Project</h3>
+        <p>Manage and track your inventory items, including ingredients, purchases, and recipe requirements.</p>
+        <a href="{% url 'inventory_project_home' %}">Go to App 1</a>
+    </div>
+    
+    <div>
+        <h3>App 2: Send Mail</h3>
+        <p>A pre configured e-mail service to send mails. Attachments for now not working.</p>
+        <a href="{% url 'user_home' %}">Go to App 2</a>
+    </div>
+    
+    <div>
+        <h3>App 3: Chat</h3>
+        <p>Communicate in real-time with other users using our chat feature.To use thise feature create 2 users. Open the page in diffrent browsers. Uses Async.</p>
+        <a href="{% url 'chat-page' %}">Go to App 3</a>
+    </div>
+    
+    <div>
+        <h3>App 4: Contact, RECaptcha</h3>
+        <p>Simple contact form that uses Google's RECaptcha V3 to check whether the request made by a human or bot.</p>
+        <a href="{% url 'contact' %}">Go to App 4</a>
+    </div>
+</body>
+</html>

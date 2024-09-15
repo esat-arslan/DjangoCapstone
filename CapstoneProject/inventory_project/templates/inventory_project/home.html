@@ -6,28 +6,44 @@
 <h2>Menu Items</h2>
 <ul>
     {% for item in menu_items %}
-    <li>{{ item.title }} - ${{ item.price }}</li>
+    <li>
+        <a href="{% url 'menu_items_update' item.id %}">
+            {{ item.title }} - ${{ item.price }}
+        </a>
+    </li>
     {% endfor %}
 </ul>
 
 <h2>Ingredients</h2>
 <ul>
     {% for ingredient in ingredients %}
-    <li>{{ ingredient.name }} - {{ ingredient.quantity }} {{ ingredient.unit }} at ${{ ingredient.unit_price }}</li>
+    <li>
+        <a href="{% url 'update_ingredient' ingredient.id %}">
+            {{ ingredient.name }} - {{ ingredient.quantity }} {{ ingredient.unit }} at ${{ ingredient.unit_price }}
+        </a>
+    </li>
     {% endfor %}
 </ul>
 
 <h2>Purchases</h2>
 <ul>
     {% for purchase in Purchases %}
-    <li>{{ purchase.menu_item }} purchased on {{ purchase.timestamp }}</li>
+    <li>
+        <a href="{% url 'purchases_update' purchase.id %}">
+            {{ purchase.menu_item }} purchased on {{ purchase.timestamp }}
+        </a>
+    </li>
     {% endfor %}
 </ul>
 
 <h2>Recipe Requirements</h2>
 <ul>
     {% for req in RecipeRequirments %}
-    <li>{{ req.menu_item }} requires {{ req.quantity }} {{ req.ingredient.unit }} of {{ req.ingredient.name }}</li>
+    <li>
+        <a href="{% url 'recipe_requirments_update' req.id %}">
+            {{ req.menu_item }} requires {{ req.quantity }} {{ req.ingredient.unit }} of {{ req.ingredient.name }}
+        </a>
+    </li>
     {% endfor %}
 </ul>
 {% endblock %}

@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+#user: send email app
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("inventory_project.urls")),
+    path("", include("home.urls")),
+    path("inventory_project/", include("inventory_project.urls")),
+    path("user/", include("user.urls")),
+    path("chat", include("chat.urls")),
+    path("contact", include("contact.urls")),
 ]

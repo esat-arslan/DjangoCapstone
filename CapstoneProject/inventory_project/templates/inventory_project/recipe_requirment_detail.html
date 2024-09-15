@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Requirement Detail</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Recipe Requirement Detail</h1>
+
+        <div class="recipe-requirement-details">
+            <h2>{{ recipe_requirement.menu_item }}</h2>
+            <p><strong>Ingredient:</strong> {{ recipe_requirement.ingredient.name }}</p>
+            <p><strong>Quantity:</strong> {{ recipe_requirement.quantity }}</p>
+            <p><strong>Unit:</strong> {{ recipe_requirement.ingredient.unit }}</p>
+            <p><strong>Cost:</strong> ${{ recipe_requirement.ingredient.unit_price }}</p> 
+            
+        </div>
+
+        <div class="actions">
+            <a href="{% url 'recipe_requirement_update' recipe_requirement.id %}">Edit</a> |
+            <a href="{% url 'recipe_requirement_delete' recipe_requirement.id %}">Delete</a> |
+            <a href="{% url 'recipe_requirements' %}">Back to Recipe Requirements</a> 
+        </div>
+    </div>
+</body>
+</html>
